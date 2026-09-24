@@ -17,4 +17,12 @@ final class ProductController extends AbstractController
             'products' => $repo->findAll(),
         ]);
     }
+
+    #[Route('/products/{id<\d+>}', name: 'product_show')]
+    public function show(Product $product): Response
+    {
+        return $this->render('product/show.html.twig', [
+            'product' => $product,
+        ]);
+    }
 }
