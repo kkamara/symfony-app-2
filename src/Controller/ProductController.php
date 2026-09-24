@@ -25,4 +25,10 @@ final class ProductController extends AbstractController
             'product' => $product,
         ]);
     }
+
+    #[Route('/products/new', name: 'product_new')]
+    public function new(): Response
+    {
+        return $this->render('product/new.html.twig');
+    }
 }
