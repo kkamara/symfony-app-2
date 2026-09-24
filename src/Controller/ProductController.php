@@ -38,7 +38,7 @@ final class ProductController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $manager->persist($product);
             $manager->flush();
 
