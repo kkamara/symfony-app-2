@@ -75,4 +75,25 @@ final class ProductController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    #[Route('/products/{id<\d+>}/delete', name: 'product_delete', methods: ['GET', 'POST'])]
+    public function delete(
+        Request $request,
+        EntityManagerInterface $manager,
+        Product $product,
+    ): Response
+    {
+        if ($request->isMethod('POST')) {
+            $manager->remove($product);
+            $manager->flush();
+
+            $this->addFlash('notice', 'Product deleted successfully!');
+
+            return $this->redirectToRoute('product_index');
+        }
+
+        return $this->render("product/delete.html.twig", [
+            'product' => $product,
+        ]);
+    }
 }
