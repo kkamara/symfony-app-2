@@ -6,4 +6,15 @@
 
 <h1>New Product</h1>
 
+{# {{ form(form) }} #}
+
+{{ form_start(form) }}
+
+    {{ form_row(form.name) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.size) }}
+    {{ form_row(form.save, {'label': 'New Product'}) }}
+
+{{ form_end(form) }}
+
 {% endblock %}
